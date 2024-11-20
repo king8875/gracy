@@ -1596,6 +1596,13 @@ body{ background: var(--dark-shade); }
 
 
 @media (max-width:1200px) {
+
+    .team-content-block .team-content-list{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(2,auto);
+        gap: 30px;
+    }
     
     .footer-top-block{
         display: grid;

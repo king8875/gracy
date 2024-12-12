@@ -79,9 +79,7 @@ body{ background: var(--dark-shade); }
     width: 57px;
     margin-right: 10px;
 }
-.hero-wrapper .star-icon.mo-v{
-    width: 40px;
-}
+.hero-wrapper .star-icon.mo-v{ width: 40px; }
 .hero-content-bot{
     display: flex;
     justify-content: flex-start;
@@ -1623,8 +1621,17 @@ body{ background: var(--dark-shade); }
 }
 /* 모바일 대응 */
 
-@media (max-width:600px) {
+@media (max-width:768px) {
+    .hero-content-bot{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows:auto;
+    }
+    .hero-content-bot .hero-bot-text:last-child{
+        grid-column: 1 / -1;
+    }
     .hero-wrapper .hero-content{ left: 10px; }
+  
 
     .problem-card-wrapper .card-content{ top: 250px; bottom: auto; left: 30%; }
     .service-sticky-container{
@@ -1634,6 +1641,21 @@ body{ background: var(--dark-shade); }
         align-items: center;
         height: 100vh;
         transform: translateX(0%);
+    }
+    .service-sticky-container .service-list{
+        display: flex;
+        gap: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        padding-right: 20px;
+        padding: 20px;
+    }
+    .service-sticky-container .service-item{
+        max-width: 460px;
+        min-width: 460px;
+        min-height: 560px;
+        max-height: 560px;
     }
     .hero02-wrapper .hero02-inner .hero02-text-wrapper{ margin-top: 50px; margin-left: 20px; }
     .hero02-text-icon{ width: 30px; }
@@ -1674,6 +1696,40 @@ body{ background: var(--dark-shade); }
         grid-template-rows: repeat(2,auto);
         gap: 30px;
     }
+
+
+    /* posts */
+    .posts-wrapper .posts-content-block{  margin-top: 0px; }
+    .posts-wrapper .posts-content-block .posts-content-list{
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    /* skill */
+    .skill-inner .skill-content-block{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 10px;
+        padding-right: 0px;
+        margin-top: 55px;
+        min-height: auto;
+    }
+    .skill-inner .skill-content-item-block{
+        display: flex;
+        border-top-left-radius: 80px;
+        border-top-right-radius: 80px;
+        border-bottom-left-radius: 80px;
+        justify-content: space-between;
+        align-items: stretch;
+        flex-direction: column;
+        overflow:auto;
+        min-height: 560px;
+        max-height: 560px;
+        width: 400px;
+        background-color: #f9fc50;
+    }
+    /* footer */
     .footer{
         padding: 130px 0;
         padding-left: 20px;

@@ -18,10 +18,9 @@ table {border-collapse:collapse;border-spacing:0}
 ul{list-style: none;}
 fieldset,input{border: 0;}
 img, picture, video, canvas, svg {display: block;max-width:100%;object-fit: cover;}
-html{ }
 body{
     overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     background-color: #fbf8f4;
     font-size: 16px;
     font-weight: 400;

@@ -371,15 +371,6 @@ const Postsswiper = new Swiper('.posts-content-block.swiper', {
 
 // });
 
-
-
-
-
-
-
-
-
-
 //화살표 애니메이션
 const postsItem = $(".posts-item");
 
@@ -396,9 +387,6 @@ postsItem.each(function (index, item) {
         gsap.to(arrow01, { x: 0, y: 0, duration: 1, });
     });
 });
-
-
-
 
 //반응형
 let mm = gsap.matchMedia();

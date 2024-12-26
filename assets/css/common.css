@@ -116,8 +116,8 @@
     display: none;
     background: none;
     border: none;
-    color: inherit; /* Swiper 기본 화살표 색상을 없앱니다 */
-    width: auto; /* 버튼 크기를 SVG 크기에 맞추기 위해 조정 */
+    color: inherit; 
+    width: auto; 
     height: auto;
 }
 
@@ -133,8 +133,19 @@
     .paragraph-3{ font-size: 12px; }
 
     .play-video-container{
-        bottom: 80px;
+        position: absolute;
+        bottom: 30px;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -30px);
+        width: 100%;
+    }
+    .play-icon-block{
+        position: absolute;
+        display: flex;
+        top: 50%;
+        right: 10px;
+        transform: translate(0, -50%);
+        width: 50px;
+        height: 50px;
     }
 }

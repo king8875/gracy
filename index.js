@@ -8,23 +8,7 @@ $(document).ready(function() {
     });
     gsap.ticker.lagSmoothing(0);
 
-    //preloader
-    var animation = $('.preloader-block .lottie')[0];
-    animation.addEventListener('complete',function(){ 
-        const herocontent = gsap.timeline();
-
-        gsap.set('.hero-section',{ padding:0 })
-        gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
-        gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
-        gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
-        herocontent.to('.preloader-block',{autoAlpha:0})
-        herocontent.to('.hero-content-bot',{ x:200, duration:2 })
-        herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
-        herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
-        herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
-        herocontent.to('.hero-section',{ padding:"10px" })
-        herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"80px" })
-    });
+    
 
     $('a').on('click', function(event) {
         event.preventDefault(); 
@@ -340,7 +324,24 @@ $(document).ready(function() {
     let mm = gsap.matchMedia();
 
     //pc
-    mm.add("(min-width: 1001px)", () => {
+    mm.add("(min-width: 1025px)", () => {
+        //preloader
+        var animation = $('.preloader-block .lottie')[0];
+        animation.addEventListener('complete',function(){ 
+            const herocontent = gsap.timeline();
+
+            gsap.set('.hero-section',{ padding:0 })
+            gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
+            gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
+            gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
+            herocontent.to('.preloader-block',{autoAlpha:0})
+            herocontent.to('.hero-content-bot',{ x:200, duration:2 })
+            herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
+            herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
+            herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
+            herocontent.to('.hero-section',{ padding:"10px" })
+            herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"80px" })
+        });
 
         //header gsap
         let lastScrollY = window.scrollY;
@@ -459,7 +460,143 @@ $(document).ready(function() {
     });
 
     //tablet
-    mm.add("(max-width: 1000px)", () => {
+    mm.add("(min-width: 769px) and (max-width:1024px)", () => {
+        //preloader
+        var animation = $('.preloader-block .lottie')[0];
+        animation.addEventListener('complete',function(){ 
+            const herocontent = gsap.timeline();
+
+            gsap.set('.hero-section',{ padding:0 })
+            gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
+            gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
+            gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
+            herocontent.to('.preloader-block',{autoAlpha:0})
+            herocontent.to('.hero-content-bot',{ x:200, duration:2 })
+            herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
+            herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
+            herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
+            herocontent.to('.hero-section',{ padding:"10px" })
+            herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"10px" })
+        });
+        //header gsap
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY) {
+            gsap.to(header, { y: '-200%', duration: 1 });
+            } else {
+            gsap.to(header,{ y: '0%', duration: 1 });
+        }
+        lastScrollY = currentScrollY; 
+        });
+
+        headerWidthMotion =  gsap.to('.header-inner',{ width:'90%' });
+        ScrollTrigger.create({
+            animation:headerWidthMotion,
+            trigger: ".hero-section",
+            start:"0% 0%", 
+            end:"50% 0%", 
+            scrub: 1,
+            onEnter:function(){
+                gsap.to('.header-inner',{
+                    backgroundColor:"#26282ccc"
+                })
+            },
+            onLeaveBack:function(){
+                gsap.to('.header-inner',{
+                    backgroundColor:"transparent"
+                })
+            },
+        });
+
+
+
+        //card gsap
+        gsap.set('.card-item',{y:1000});
+        gsap.set($('.card-item .card-back'),{ transform: "rotateY(180deg)"});
+
+        const card = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".problem-wrapper", 
+                start: "0% 80%", 
+                end: "100% 100%", 
+                scrub: 1,
+                onUpdate:function(self){
+                    if (self.progress >= 0.6) {
+                        $('.problem-inner').addClass('up')
+                    }else{
+                        $('.problem-inner').removeClass('up')
+                    }
+                }
+            },
+        })
+
+        card.to($(".card-item")[0], { y: "0%"})
+        card.to($(".card-item")[1], { y: "10%"},)
+        card.to($(".card-item")[2], { y: "20%"},)
+        card.to($(".card-item")[3], { y: "30%"},)
+        card.to($(".card-item")[4], { y: "40%"},)
+        card.to($('.card-overlay'),{ xPercent: -100, autoAlpha:0 })
+        card.to($('.problem-video-wrap'),{ opacity:1 },"<")
+        card.to($(".card-item")[0], { x:300, y:-100, scale:1 },"<")
+        card.to($(".card-item")[1], { x:300, y:400, scale:1 },"<")
+        card.to($(".card-item")[2], { x:-50, y:-150, scale:1 },"<")
+        card.to($(".card-item")[3], { x:-400, y:400, scale:1 },"<")
+        card.to($(".card-item")[4], { x:-400, y:-100, scale:1 },"<")
+        card.to('.problem-title-block',{ opacity:1 },"<")
+        card.to('.card-item .card-front',{ rotateY:'180deg' })
+        card.to('.card-item .card-back',{ rotateY:'0deg' },"<")
+        card.to('.problem-section',{ backgroundColor:"var(--bg-color)" });
+
+
+        //가로 스크롤 gsap
+        const service = gsap.timeline({
+            scrollTrigger:{
+                trigger:'.service-section',
+                start:"0% 100%",
+                end:"100% 100%",
+            },
+        });
+        service.from('.service-title-block',{
+            yPercent:20,
+            opacity:0
+        });
+
+        gsap.to(".service-section .service-list", {
+            scrollTrigger: {
+                trigger: ".service-section",
+                start: "0% 100%",
+                end:"100% 100%",
+                scrub: 0,
+                invalidateOnRefresh:true,
+            },
+            xPercent:-100,
+        });
+        // const servicetx = gsap.timeline('.service-title-block',{
+        //     scrollTrigger:{
+        //         trigger:'.service-section',
+        //         start:"0% 100%",
+        //         end:"100% 100%",
+        //         markers:true,
+        //     },
+        //     yPercent:-100,
+        // });
+
+        $('.first-text, .second-text').removeClass('mo-v');
+        $('.hero-wrapper .star-icon').removeClass('mo-v');
+        $('.header-nav').removeClass('mo-v');
+        $('.service-title').removeClass('mo-v');
+
+
+        // posts
+        const Postsswiper = new Swiper('.posts-content-block.swiper', {
+            slidesPerView: 'auto',
+            spaceBetween:30,
+        });
+
         $('.first-text, .second-text').addClass('mo-v');
         $('.hero-wrapper .star-icon').addClass('mo-v');
         $('.header-nav').addClass('mo-v');
@@ -468,7 +605,23 @@ $(document).ready(function() {
 
     //mobile
     mm.add("(max-width: 768px)", () => {
+        //preloader
+        var animation = $('.preloader-block .lottie')[0];
+        animation.addEventListener('complete',function(){ 
+            const herocontent = gsap.timeline();
 
+            gsap.set('.hero-section',{ padding:0 })
+            gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
+            gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
+            gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
+            herocontent.to('.preloader-block',{autoAlpha:0})
+            herocontent.to('.hero-content-bot',{ x:200, duration:2 })
+            herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
+            herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
+            herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
+            herocontent.to('.hero-section',{ padding:"10px" })
+            herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"10px" })
+        });
         //header gsap
         let lastScrollY = window.scrollY;
         const header = document.querySelector('.header');

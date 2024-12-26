@@ -222,22 +222,27 @@ body{ background: var(--dark-shade); }
     height: 100%;
     border-radius: 80px;
 }
-.problem-card-wrapper .card-content-wrapper{ position: relative; }
+.problem-card-wrapper .card-content-wrapper{ 
+    position: relative;
+    height: 100%;
+}
 .problem-card-wrapper .card-content{
     position: absolute;
-    display: flex;
-    top: 250px; bottom: auto; left: 45%;
+    top: 250px; bottom: auto; left: 40%;
+    transform: translate(-40%, 0px);
     height: 100%;
     z-index: 998;
+    width: 100%;
 }
 .problem-card-wrapper .card-item{
     position: absolute;
-    top: 0px;left: 0;
-    /* width: 183px; */
-    height: 148px;
-    min-width: 183px;
+    top: 0px;left: 45%;
+    transform: translate(-45%, 0px);
+    height: 150px;
+    width: 183px;
     border-radius: 22px;
-    scale: 2.5;
+    scale: 2;
+    transform-origin: -50% 50%; /* 중심 기준 */
     transition: .3;
 }
 .card-item:nth-child(1) .card-front{ background: #fbff47; }
@@ -793,7 +798,6 @@ body{ background: var(--dark-shade); }
     width: 100%;
 }
 .slider-bottom-block .slider-bottom-right-block .single-star-icon{ width: 108px; }
-.slider-bottom-right-block .single-star-icon.v1{ opacity: 0; }
 .slider-item .single-star-icon{ position: relative; z-index: 10; }
 .slider-collaps-block-wrap{
     position: relative;
@@ -816,6 +820,13 @@ body{ background: var(--dark-shade); }
 .slider-item:nth-child(4) .slider-bottom-right-block
 {
     margin-top: -200px;
+}
+.slider-item:nth-child(2) .slider-bottom-right-block .single-star-icon svg{
+    animation: rotate 8s infinite linear;
+}
+@keyframes rotate {
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(180deg); }
 }
 .slider-item:nth-child(3) .slider-bottom-right-block{
     padding-right: 100px;
@@ -1622,16 +1633,22 @@ body{ background: var(--dark-shade); }
 /* 모바일 대응 */
 
 @media (max-width:768px) {
+    /* hero01 */
+    .hero-wrapper{
+        border-radius: 20px;
+        height: 100vh;
+    }
     .hero-content-bot{
         display: grid;
         grid-template-columns: repeat(2,1fr);
         grid-template-rows:auto;
     }
-    .hero-content-bot .hero-bot-text:last-child{
-        grid-column: 1 / -1;
-    }
+    .hero-content-bot .hero-bot-text:last-child{ grid-column: 1 / -1; }
     .hero-wrapper .hero-content{ left: 10px; }
-  
+    .hero-content .hero-content-top .first-title{ flex-direction: column; }
+
+    /* brand */
+    .brand-logo-wrapper .bl-head{ margin-left: 10px; }
 
     .problem-card-wrapper .card-content{ top: 250px; bottom: auto; left: 30%; }
     .service-sticky-container{

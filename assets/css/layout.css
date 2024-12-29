@@ -75,6 +75,7 @@
 @media (max-width:768px) {
     .header{ top: 10px; padding: 0 5px; }
     .header-inner{ padding: 10px; }
+    .header-nav{display: none;}
     .header .header-logo{ padding: 0px; }
     .header .header-btn-wrapper a{ padding: 5px 2px; }
 }

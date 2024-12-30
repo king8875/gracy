@@ -3,13 +3,31 @@
 const lenis = new Lenis();
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => {
-lenis.raf(time * 600); // Convert time from seconds to milliseconds
+lenis.raf(time * 600); 
 });
 gsap.ticker.lagSmoothing(0);
 
 $('a').on('click', function(event) {
     event.preventDefault(); 
 });
+//preloader
+var animation = $('.preloader-block .lottie')[0];
+animation.addEventListener('complete',function(){ 
+    const herocontent = gsap.timeline();
+
+    gsap.set('.hero-section',{ padding:0 })
+    gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
+    gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
+    gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
+    herocontent.to('.preloader-block',{autoAlpha:0})
+    herocontent.to('.hero-content-bot',{ x:200, duration:2 })
+    herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
+    herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
+    herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
+    herocontent.to('.hero-section',{ padding:"10px" })
+    herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"80px" })
+});
+
 
 //swiper js
 const swiper01 = new Swiper(".swiper01", {
@@ -96,7 +114,7 @@ herotext.to('.subtitle-text.three p', { width: 0, duration: 1, delay:1 });
 
 
 
-
+// slider
 gsap.to(".slider-item:nth-child(2) .single-star-icon.v1",{ opacity:1 })
 gsap.set('.slider-item:nth-child(n+2)',{ opacity:0, scale:0 })
 const sliderintro = gsap.timeline({
@@ -107,9 +125,7 @@ const sliderintro = gsap.timeline({
         scrub:1, 
     }
 });
-sliderintro.from('.slider-container .intro .content',{
-    scale : 0.5,
-})
+sliderintro.from('.slider-container .intro .content',{ scale : 0.5, });
 
 
 const slider = gsap.timeline({
@@ -158,45 +174,6 @@ gsap.to('.slider-collaps-block',{
     },
     scale:0.3,
 });
-
-gsap.set('.slider-item:nth-child(5) .slider-star-grid-block',{
-    gridTemplateColumns:"repeat(1,1fr)",
-    gridTemplateRows: "repeat(1,auto)"
-});
-const slider05 = gsap.timeline();
-
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(1)',{
-    x:130
-})
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(2)',{
-    y:-130
-})
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(3)',{
-    y:-130,
-    x:130
-},"<")
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(4)',{
-    y:-260,
-    x:130
-})
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(5)',{
-    y:-130,
-    x:130
-},"<")
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(6)',{
-    y:-130,
-    x:130
-},"<")
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(7)',{
-    y:-130,
-    x:130
-},"<")
-slider05.to('.slider-item:nth-child(5) .single-star-icon:nth-child(8)',{
-    y:-130,
-    x:130
-},"<")
-
-
 
 
 //stick gsap
@@ -249,7 +226,6 @@ const t2 = gsap.timeline({
 });
 t2.from('.hero03-title-text',{ yPercent:20, duration:1, autoAlpha:0 })
 
-
 const t3 = gsap.timeline({
     scrollTrigger: {
         trigger: $('.hero03-content-list'), 
@@ -259,8 +235,6 @@ const t3 = gsap.timeline({
 });
 t3.from('.hero03-item-title strong',{ yPercent:100, duration:1, })
 t3.from('.hero03-item-info p',{ yPercent:100, duration:1, })
-
-
 
 const team = gsap.timeline({
     scrollTrigger: {
@@ -274,31 +248,12 @@ team.from('.service-title-block-head.team-v',{ yPercent:100, duration:1 })
 team.from('.service-title-block-main.team-v',{ yPercent:100, duration:1 },"<")
 
 
-
-const headline = gsap.timeline({
-    scrollTrigger: {
-        trigger: $('.headline-section'), 
-        start: "top 80%", 
-        once: true, 
-    }
-});
-headline.from('.headline-star-icon',{ y:100, duration:1 })
-headline.to('.headline-star-icon',{ x:600, scale:3, duration:2 })
-
-
-
-
 const Reviewswiper = new Swiper('.review-inner.swiper', {
-    loop:true,
     slidesPerView: 2.5, 
     spaceBetween:30,
-
 });
 
-// const Skillswiper = new Swiper('.skill-section .swiper', {
-//     slidesPerView: 2,
 
-// });
 
 //화살표 애니메이션
 const postsItem = $(".posts-item");
@@ -322,37 +277,22 @@ let mm = gsap.matchMedia();
 
 //pc
 mm.add("(min-width: 1025px)", () => {
-    //preloader
-    var animation = $('.preloader-block .lottie')[0];
-    animation.addEventListener('complete',function(){ 
-        const herocontent = gsap.timeline();
-
-        gsap.set('.hero-section',{ padding:0 })
-        gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
-        gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
-        gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
-        herocontent.to('.preloader-block',{autoAlpha:0})
-        herocontent.to('.hero-content-bot',{ x:200, duration:2 })
-        herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
-        herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
-        herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
-        herocontent.to('.hero-section',{ padding:"10px" })
-        herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"80px" })
-    });
+   
+    
 
     //header gsap
     let lastScrollY = window.scrollY;
     const header = document.querySelector('.header');
 
     window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
+        const currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY) {
-        gsap.to(header, { y: '-200%', duration: 1 });
-        } else {
-        gsap.to(header,{ y: '0%', duration: 1 });
-    }
-    lastScrollY = currentScrollY; 
+        if (currentScrollY > lastScrollY) {
+            gsap.to(header, { y: '-200%', duration: 1 });
+            } else {
+            gsap.to(header,{ y: '0%', duration: 1 });
+        }
+        lastScrollY = currentScrollY; 
     });
 
     headerWidthMotion =  gsap.to('.header-inner',{ width:'90%' });
@@ -401,9 +341,9 @@ mm.add("(min-width: 1025px)", () => {
     card.to($('.card-overlay'),{ xPercent: -100, autoAlpha:0 })
     card.to($('.problem-video-wrap'),{ opacity:1 },"<")
     card.to($(".card-item")[0], { x:300, y:-100, scale:1 },"<")
-    card.to($(".card-item")[1], { x:300, y:400, scale:1 },"<")
+    card.to($(".card-item")[1], { x:300, y:300, scale:1 },"<")
     card.to($(".card-item")[2], { x:-150, y:-150, scale:1 },"<")
-    card.to($(".card-item")[3], { x:-600, y:400, scale:1 },"<")
+    card.to($(".card-item")[3], { x:-600, y:300, scale:1 },"<")
     card.to($(".card-item")[4], { x:-600, y:-100, scale:1 },"<")
     card.to('.problem-title-block',{ opacity:1 },"<")
     card.to('.card-item .card-front',{ rotateY:'180deg' })
@@ -433,21 +373,28 @@ mm.add("(min-width: 1025px)", () => {
         },
         xPercent:-100,
     });
-    // const servicetx = gsap.timeline('.service-title-block',{
-    //     scrollTrigger:{
-    //         trigger:'.service-section',
-    //         start:"0% 100%",
-    //         end:"100% 100%",
-    //         markers:true,
-    //     },
-    //     yPercent:-100,
-    // });
-
+  
     $('.first-text, .second-text').removeClass('mo-v');
     $('.hero-wrapper .star-icon').removeClass('mo-v');
     $('.header-nav').removeClass('mo-v');
     $('.service-title').removeClass('mo-v');
 
+
+    const Reviewswiper = new Swiper('.review-inner.swiper', {
+        // loop:true,
+        slidesPerView: 2.5, 
+        spaceBetween:30,
+    });
+
+    const headline = gsap.timeline({
+        scrollTrigger: {
+            trigger: $('.headline-section'), 
+            start: "0% 80%", 
+            once: true, 
+        }
+    });
+    headline.from('.headline-star-icon',{ y:100, duration:1 })
+    headline.to('.headline-star-icon',{ x:600, scale:3, duration:2 });
 
     // posts
     const Postsswiper = new Swiper('.posts-content-block.swiper', {
@@ -459,23 +406,6 @@ mm.add("(min-width: 1025px)", () => {
 //tablet
 mm.add("(min-width: 769px) and (max-width:1024px)", () => {
 
-    //preloader
-    var animation = $('.preloader-block .lottie')[0];
-    animation.addEventListener('complete',function(){ 
-        const herocontent = gsap.timeline();
-
-        gsap.set('.hero-section',{ padding:0 })
-        gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
-        gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
-        gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
-        herocontent.to('.preloader-block',{autoAlpha:0})
-        herocontent.to('.hero-content-bot',{ x:200, duration:2 })
-        herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
-        herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
-        herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
-        herocontent.to('.hero-section',{ padding:"10px" })
-        herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"10px" })
-    });
     //header gsap
     let lastScrollY = window.scrollY;
     const header = document.querySelector('.header');
@@ -509,8 +439,6 @@ mm.add("(min-width: 769px) and (max-width:1024px)", () => {
             })
         },
     });
-
-
 
     //card gsap
     gsap.set('.card-item',{y:1000});
@@ -573,21 +501,11 @@ mm.add("(min-width: 769px) and (max-width:1024px)", () => {
         },
         xPercent:-100,
     });
-    // const servicetx = gsap.timeline('.service-title-block',{
-    //     scrollTrigger:{
-    //         trigger:'.service-section',
-    //         start:"0% 100%",
-    //         end:"100% 100%",
-    //         markers:true,
-    //     },
-    //     yPercent:-100,
-    // });
 
     $('.first-text, .second-text').removeClass('mo-v');
     $('.hero-wrapper .star-icon').removeClass('mo-v');
     $('.header-nav').removeClass('mo-v');
     $('.service-title').removeClass('mo-v');
-
 
     // posts
     const Postsswiper = new Swiper('.posts-content-block.swiper', {
@@ -603,7 +521,6 @@ mm.add("(min-width: 769px) and (max-width:1024px)", () => {
 
 //mobile
 mm.add("(max-width: 768px)", () => {
-
     //preloader
     var animation = $('.preloader-block .lottie')[0];
     animation.addEventListener('complete',function(){ 
@@ -694,7 +611,6 @@ mm.add("(max-width: 768px)", () => {
     card.to('.card-item .card-back',{ rotateY:'0deg' },"<")
     card.to('.problem-section',{ backgroundColor:"var(--bg-color)" });
 
-
     gsap.to(".service-section .service-list", {
         scrollTrigger: {
             trigger: ".service-section",
@@ -707,19 +623,16 @@ mm.add("(max-width: 768px)", () => {
         x:function(){
             return (window.innerWidth + 20 );
         },
-    
     });
 
     const Reviewswiper = new Swiper('.review-inner.swiper', {
-        loop:true,
-        slidesPerView: auto, 
+        slidesPerView: 1, 
         spaceBetween:10,
-    
     });
     // posts
     const Postsswiper = new Swiper('.posts-content-block.swiper', {
         slidesPerView: 'auto',
-        spaceBetween:0,
+        spaceBetween:10,
     });
 
 });

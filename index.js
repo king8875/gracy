@@ -249,8 +249,8 @@ team.from('.service-title-block-main.team-v',{ yPercent:100, duration:1 },"<")
 
 
 const Reviewswiper = new Swiper('.review-inner.swiper', {
-    slidesPerView: 2.5, 
-    spaceBetween:30,
+    slidesPerView: 2, 
+    spaceBetween:20,
 });
 
 
@@ -277,8 +277,7 @@ let mm = gsap.matchMedia();
 
 //pc
 mm.add("(min-width: 1025px)", () => {
-   
-    
+  
 
     //header gsap
     let lastScrollY = window.scrollY;
@@ -380,12 +379,7 @@ mm.add("(min-width: 1025px)", () => {
     $('.service-title').removeClass('mo-v');
 
 
-    const Reviewswiper = new Swiper('.review-inner.swiper', {
-        // loop:true,
-        slidesPerView: 2.5, 
-        spaceBetween:30,
-    });
-
+    
     const headline = gsap.timeline({
         scrollTrigger: {
             trigger: $('.headline-section'), 
@@ -395,7 +389,7 @@ mm.add("(min-width: 1025px)", () => {
     });
     headline.from('.headline-star-icon',{ y:100, duration:1 })
     headline.to('.headline-star-icon',{ x:600, scale:3, duration:2 });
-
+    
     // posts
     const Postsswiper = new Swiper('.posts-content-block.swiper', {
         slidesPerView: 'auto',
@@ -405,6 +399,8 @@ mm.add("(min-width: 1025px)", () => {
 
 //tablet
 mm.add("(min-width: 769px) and (max-width:1024px)", () => {
+
+  
 
     //header gsap
     let lastScrollY = window.scrollY;
@@ -553,7 +549,7 @@ mm.add("(max-width: 768px)", () => {
     lastScrollY = currentScrollY; 
     });
 
-    headerWidthMotion =  gsap.to('.header-inner',{ width:'100%' });
+    headerWidthMotion =  gsap.to('.header-inner',{ width:'100%'});
     ScrollTrigger.create({
         animation:headerWidthMotion,
         trigger: ".hero-section",
@@ -624,10 +620,9 @@ mm.add("(max-width: 768px)", () => {
             return (window.innerWidth + 20 );
         },
     });
-
     const Reviewswiper = new Swiper('.review-inner.swiper', {
-        slidesPerView: 1, 
-        spaceBetween:10,
+        slidesPerView: 'auto', 
+        spaceBetween:20,
     });
     // posts
     const Postsswiper = new Swiper('.posts-content-block.swiper', {

@@ -221,12 +221,12 @@ body{ background: var(--dark-shade); }
 }
 .problem-card-wrapper .card-content{
     position: absolute;
-    top: 250px; bottom: auto; left: 50%;
+    top: 250px; bottom: auto; left: 55%;
     transform: translate(-50%, 0px);
     height: 100%;
     z-index: 998;
     width: 100%;
-    margin-left: 100px;
+    /* margin-left: 100px; */
 }
 .problem-card-wrapper .card-item{
     position: absolute;
@@ -235,7 +235,7 @@ body{ background: var(--dark-shade); }
     height: 150px;
     width: 180px;
     border-radius: 22px;
-    scale: 2.3;
+    scale: 2.5;
     transition: .3;
 }
 .card-item:nth-child(1) .card-front{ background: #fbff47; }
@@ -849,22 +849,7 @@ body{ background: var(--dark-shade); }
     border-radius: 40px;
     animation: outlinePulse 1s infinite alternate;
 }
-@keyframes outlinePulse {
-    0% { scale: 1.4; }
-    100% { scale: 1; }
-}
-@keyframes rotate {
-    0%{ transform: rotate(0deg); }
-    100%{ transform: rotate(180deg); }
-}
-@keyframes staranimation {
-    0%{ 
-        transform: rotate(0deg); 
-    }
-    100%{
-        transform: rotate(180deg); 
-    }
-}
+
 /* stick-section */
 .stick-wrapper .stick-main-title-block{
     max-width: 850px;
@@ -1099,20 +1084,30 @@ body{ background: var(--dark-shade); }
 
 
 /* review-section */
-.review-inner{ height: 100%; }
+.review-section{
+    position: relative;
+}
+.review-inner{ 
+    width: 100%;
+    height: 100%; 
+}
 .review-list{ 
+    display: flex;
     width: 100%;
     height: 100%;
+}
+.review-item {
+    padding: 0 20px;
 }
 .review-item a{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 30px;  
 }
 .review-item a .review-item-block{
+    display: flex;
     gap: 16px;
     color: var(--white);
-    background-color: #000;
     border-top-left-radius: 80px;
     border-top-right-radius: 80px;
     border-bottom-right-radius: 80px;
@@ -1120,11 +1115,15 @@ body{ background: var(--dark-shade); }
     align-items: flex-start;
     height: 100%;
     padding: 40px;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 500;
     line-height: 1.2;
-    display: flex;
     overflow: hidden;
+    background-color: #000;
+}
+.review-item a .review-item-block .review-icon-block svg{
+    width: 50px;
+    height: 50px;
 }
 .review-item a .review-item-block .review-content-block{
     display: flex;
@@ -1142,6 +1141,7 @@ body{ background: var(--dark-shade); }
     width: 50px;
     height: 50px;
     border-radius: 100%;
+    margin-left: 30px;
 }
 .review-author-info-block .review-author-info-name{
     font-size: 14px;
@@ -1544,7 +1544,6 @@ body{ background: var(--dark-shade); }
     font-weight: 500;
     line-height: 1.2;
 }
-
 .footer-top-item a:hover{ color: var(--lime-green); }
 .footer-top-btn:hover{
     color: var(--white);
@@ -1553,20 +1552,25 @@ body{ background: var(--dark-shade); }
 .footer-mid-title-text:hover{ color: #f9fc50; }
 .footer-bottom-left-item:hover{ color: #f9fc50; }
 
-
+@keyframes outlinePulse {
+    0% { scale: 1.4; }
+    100% { scale: 1; }
+}
+@keyframes rotate {
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(180deg); }
+}
+@keyframes staranimation {
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(180deg); }
+}
 @keyframes marquee {
-    0% {
-        transform: translateX(0); 
-    }
-    100% {
-        transform: translateX(-100%); 
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
 
 @media (max-width:1200px) {
-
-    
     .footer-top-block{
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -1582,16 +1586,20 @@ body{ background: var(--dark-shade); }
         align-items: center;
         justify-content: space-between;
     }
-    
 }
 
 /* 태블릿 대응 */
 @media (min-width:769px) and (max-width:1024px) {
-    .problem-card-wrapper .card-content{ margin-left: 0px; }
+    .problem-card-wrapper .card-content{
+        position: absolute;
+        top: 250px; bottom: auto; left: 50%;
+        transform: translate(-50%, 0px);
+        height: 100%;
+        z-index: 998;
+        width: 100%;
+    }
+    .slider-bottom-block .slider-bottom-right-block{ visibility: hidden; }
 }
-
-
-
 
 /* 모바일 대응 */
 @media (max-width:768px) {
@@ -1765,10 +1773,9 @@ body{ background: var(--dark-shade); }
         display: flex;
         flex-direction: column;
         gap: 10px;
-        padding-left: 10px;
+        padding-left: 0px;
         padding-right: 0px;
         margin-top: 55px;
-        min-height: auto;
     }
     .skill-inner .skill-content-item-block{
         display: flex;
@@ -1776,9 +1783,7 @@ body{ background: var(--dark-shade); }
         border-top-right-radius: 80px;
         border-bottom-left-radius: 80px;
         justify-content: space-between;
-        align-items: stretch;
         flex-direction: column;
-        overflow:auto;
         min-height: 560px;
         max-height: 560px;
         width: 100%;
@@ -1795,5 +1800,18 @@ body{ background: var(--dark-shade); }
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+    }
+}
+
+@media (max-width:500px) {
+    .problem-card-wrapper .card-item{ scale: 1; }
+    .problem-card-wrapper .card-content{
+        position: absolute;
+        top: 250px; bottom: auto; left: 50%;
+        transform: translate(-50%, 0px);
+        height: 100%;
+        z-index: 998;
+        width: 100%;
+        margin-left: 130px;
     }
 }

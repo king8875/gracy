@@ -341,9 +341,9 @@ mm.add("(min-width: 1025px)", () => {
     card.to($('.problem-video-wrap'),{ opacity:1 },"<")
     card.to($(".card-item")[0], { x:300, y:-100, scale:1 },"<")
     card.to($(".card-item")[1], { x:300, y:300, scale:1 },"<")
-    card.to($(".card-item")[2], { x:-150, y:-150, scale:1 },"<")
-    card.to($(".card-item")[3], { x:-600, y:300, scale:1 },"<")
-    card.to($(".card-item")[4], { x:-600, y:-100, scale:1 },"<")
+    card.to($(".card-item")[2], { x:-200, y:-150, scale:1 },"<")
+    card.to($(".card-item")[3], { x:-700, y:300, scale:1 },"<")
+    card.to($(".card-item")[4], { x:-700, y:-100, scale:1 },"<")
     card.to('.problem-title-block',{ opacity:1 },"<")
     card.to('.card-item .card-front',{ rotateY:'180deg' })
     card.to('.card-item .card-back',{ rotateY:'0deg' },"<")
@@ -631,3 +631,42 @@ mm.add("(max-width: 768px)", () => {
     });
 
 });
+
+
+// mm.add("(max-width: 500px)", () => {
+//     //card gsap
+//     gsap.set('.card-item',{y:1000});
+//     gsap.set($('.card-item .card-back'),{ transform: "rotateY(180deg)"});
+//     const card = gsap.timeline({
+//         scrollTrigger: {
+//             trigger: ".problem-wrapper", 
+//             start: "0% 80%", 
+//             end: "100% 100%", 
+//             scrub: 1,
+//             onUpdate:function(self){
+//                 if (self.progress >= 0.6) {
+//                     $('.problem-inner').addClass('up')
+//                 }else{
+//                     $('.problem-inner').removeClass('up')
+//                 }
+//             }
+//         },
+//     })
+
+//     card.to($(".card-item")[0], { y: "0%"})
+//     card.to($(".card-item")[1], { y: "10%"},)
+//     card.to($(".card-item")[2], { y: "20%"},)
+//     card.to($(".card-item")[3], { y: "30%"},)
+//     card.to($(".card-item")[4], { y: "40%"},)
+//     card.to($('.card-overlay'),{ xPercent: -100, autoAlpha:0 })
+//     card.to($('.problem-video-wrap'),{ opacity:1 },"<")
+//     card.to($(".card-item")[0], { x:-100, y:400, scale:0.8 },"<")
+//     card.to($(".card-item")[1], { x:100, y:400, scale:0.8 },"<")
+//     card.to($(".card-item")[2], { x:-0, y:-150, scale:0.8 },"<")
+//     card.to($(".card-item")[3], { x:-100, y:-50, scale:0.8 },"<")
+//     card.to($(".card-item")[4], { x:100, y:-50, scale:0.8 },"<")
+//     card.to('.problem-title-block',{ opacity:1 },"<")
+//     card.to('.card-item .card-front',{ rotateY:'180deg' })
+//     card.to('.card-item .card-back',{ rotateY:'0deg' },"<")
+//     card.to('.problem-section',{ backgroundColor:"var(--bg-color)" });
+// });

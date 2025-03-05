@@ -2,28 +2,29 @@
 //lenis 스크롤 스무스
 const lenis = new Lenis();
 lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => {
-lenis.raf(time * 600); 
-});
+gsap.ticker.add((time) => { lenis.raf(time * 600); });
 gsap.ticker.lagSmoothing(0);
 
-$('a').on('click', function(event) {
-    event.preventDefault(); 
+document.querySelectorAll('a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+    });
 });
+
 //preloader
-var animation = $('.preloader-block .lottie')[0];
+var animation = document.querySelector('.preloader-block .lottie');
 animation.addEventListener('complete',function(){ 
     const herocontent = gsap.timeline();
 
     gsap.set('.hero-section',{ padding:0 })
     gsap.set('.hero-wrapper',{ height:"100vh", borderRadius:"0px" })
     gsap.set('.hero-content-bot',{ scale:1.5, x:300, y:-150 })
-    gsap.set($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:100 })
+    gsap.set('.hero-content-top .first-text h1, .hero-content-top .second-text h1',{ y:100 })
     herocontent.to('.preloader-block',{autoAlpha:0})
     herocontent.to('.hero-content-bot',{ x:200, duration:2 })
     herocontent.to('.hero-content-bot',{ y:50, duration:1 },"<")
     herocontent.to('.hero-content-bot',{ scale:1, x:0, y:0 })
-    herocontent.to($('.hero-content-top .first-text h1, .hero-content-top .second-text h1'),{ y:0 })
+    herocontent.to('.hero-content-top .first-text h1, .hero-content-top .second-text h1',{ y:0 })
     herocontent.to('.hero-section',{ padding:"10px" })
     herocontent.to('.hero-wrapper',{ height:"95vh", borderRadius:"80px" })
 });
@@ -32,29 +33,29 @@ animation.addEventListener('complete',function(){
 //swiper js
 const swiper01 = new Swiper(".swiper01", {
     navigation: {
-    nextEl: "#service-item01 .swiper-button-next",
-    prevEl: "#service-item01 .swiper-button-prev",
+        nextEl: "#service-item01 .swiper-button-next",
+        prevEl: "#service-item01 .swiper-button-prev",
     },
     loop: true 
 });
 const swiper02 = new Swiper(".swiper02", {
     navigation: {
-    nextEl: "#service-item02 .swiper-button-next",
-    prevEl: "#service-item02 .swiper-button-prev",
+        nextEl: "#service-item02 .swiper-button-next",
+        prevEl: "#service-item02 .swiper-button-prev",
     },
     loop: true 
 });
 const swiper03 = new Swiper(".swiper03", {
     navigation: {
-    nextEl: "#service-item03 .swiper-button-next",
-    prevEl: "#service-item03 .swiper-button-prev",
+        nextEl: "#service-item03 .swiper-button-next",
+        prevEl: "#service-item03 .swiper-button-prev",
     },
     loop: true 
 });
 const swiper04 = new Swiper(".swiper04", {
     navigation: {
-    nextEl: "#service-item04 .swiper-button-next",
-    prevEl: "#service-item04 .swiper-button-prev",
+        nextEl: "#service-item04 .swiper-button-next",
+        prevEl: "#service-item04 .swiper-button-prev",
     },
     loop: true 
 });
